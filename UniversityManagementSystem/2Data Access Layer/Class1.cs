@@ -1,4 +1,4 @@
-﻿namespace Group4.BusinessLogicLayer
+﻿namespace _2Data_Access_Layer
 {
     public class Class1
     {

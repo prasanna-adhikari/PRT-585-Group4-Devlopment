@@ -1,4 +1,4 @@
-﻿namespace Group4.CommonInfrastructure
+﻿namespace _1CommonInfrastructure
 {
     public class Class1
     {

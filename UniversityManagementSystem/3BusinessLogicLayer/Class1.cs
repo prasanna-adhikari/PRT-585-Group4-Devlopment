@@ -1,4 +1,4 @@
-﻿namespace Group4.Bootstrap
+﻿namespace _3BusinessLogicLayer
 {
     public class Class1
     {

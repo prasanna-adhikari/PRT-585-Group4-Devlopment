@@ -1,4 +1,4 @@
-﻿namespace Group4.DataAccessLayer
+﻿namespace _4Bootstrap
 {
     public class Class1
     {
