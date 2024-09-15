@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="8.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\1CommonInfrastructure\1CommonInfrastructure.csproj" />
     <ProjectReference Include="..\2Data Access Layer\2DataAccessLayer.csproj" />
   </ItemGroup>

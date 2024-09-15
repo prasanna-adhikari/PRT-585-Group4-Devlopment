@@ -14,9 +14,15 @@ namespace _2DataAccessLayer.Context
         {
         }
 
-        // Define the DbSet for the Student model
+        // DbSet for the Student model
         public DbSet<Student> Students { get; set; }
 
-        // Add DbSets for other models below
+        // Add DbSets for Department below
+        public DbSet<Department> Departments { get; set; }
+
+        //DbSet for the Course model
+        public DbSet<Course> Courses { get; set; }
+
+
     }
 }

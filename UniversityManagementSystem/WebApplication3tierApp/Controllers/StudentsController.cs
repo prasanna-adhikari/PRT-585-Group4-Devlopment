@@ -8,6 +8,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using _3BusinessLogicLayer.Interfaces;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.JsonPatch.Operations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace WebApplication3tierApp.Controllers
 {
@@ -59,18 +62,37 @@ namespace WebApplication3tierApp.Controllers
             return CreatedAtAction(nameof(GetStudent), new { id = createdStudent.StudentId }, createdStudent);
         }
 
-        // PUT: api/Students/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudent(int id, Student student)
+        // PATCH: api/Students/{id}
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchStudent(int id, [FromBody] JsonPatchDocument<Student> patchDoc)
         {
-            if (id != student.StudentId)
+            if (patchDoc == null)
             {
-                return BadRequest();
+                return BadRequest("Invalid patch document");
             }
 
+            var student = await _studentService.GetStudentByIdAsync(id);
+            if (student == null)
+            {
+                return NotFound("Student not found");
+            }
+
+            // Apply the patch
+            patchDoc.ApplyTo(student, ModelState);
+
+            // Check if the model state is valid after the patch is applied
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Update the student in the database
             await _studentService.UpdateStudentAsync(student);
-            return NoContent();
+
+            // Return a success message
+            return Ok(new { message = "Student updated successfully" });
         }
+
 
         // DELETE: api/Students/5
         [HttpDelete("{id}")]
