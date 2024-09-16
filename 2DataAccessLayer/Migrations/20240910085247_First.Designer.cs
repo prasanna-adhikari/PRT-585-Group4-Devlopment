@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _2DataAccessLayer.Context;
 
@@ -11,9 +12,10 @@ using _2DataAccessLayer.Context;
 namespace _2DataAccessLayer.Migrations
 {
     [DbContext(typeof(DBEntitiesContext))]
-    partial class DBEntitiesContextModelSnapshot : ModelSnapshot
+    [Migration("20240910085247_First")]
+    partial class First
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,27 +124,6 @@ namespace _2DataAccessLayer.Migrations
                     b.HasKey("SystemActionID");
 
                     b.ToTable("SystemActions");
-                });
-
-            modelBuilder.Entity("_2DataAccessLayer.Context.Models.Unit", b =>
-                {
-                    b.Property<int>("UnitId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UnitId"), 1L, 1);
-
-                    b.Property<string>("UnitCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UnitName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UnitId");
-
-                    b.ToTable("Units");
                 });
 
             modelBuilder.Entity("_2DataAccessLayer.Context.Models.UserAccount", b =>

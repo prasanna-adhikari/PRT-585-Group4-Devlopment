@@ -19,6 +19,7 @@ namespace _2DataAccessLayer.Context
         public DbSet<Movie> Movies { get; set; }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Unit> Units { get; set; }
 
         public DbSet<Employee> Employees { get; set; }
 
@@ -27,6 +28,7 @@ namespace _2DataAccessLayer.Context
         public DbSet<UserAccount> UserAccounts { get; set; }
 
         public DbSet<SystemAction> SystemActions { get; set; }
+
 
     }
 
