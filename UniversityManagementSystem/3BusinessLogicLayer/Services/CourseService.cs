@@ -3,10 +3,7 @@ using _2DataAccessLayer.Context;
 using _3BusinessLogicLayer.Interfaces;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace _3BusinessLogicLayer.Services
@@ -22,12 +19,14 @@ namespace _3BusinessLogicLayer.Services
 
         public async Task<IEnumerable<Course>> GetAllCoursesAsync()
         {
-            return await _context.Courses.Include(c => c.Department).ToListAsync();
+            // Removed the .Include(c => c.Department) since Department is no longer part of the Course model
+            return await _context.Courses.ToListAsync();
         }
 
         public async Task<Course> GetCourseByIdAsync(int id)
         {
-            return await _context.Courses.Include(c => c.Department).FirstOrDefaultAsync(c => c.CourseId == id);
+            // Removed the .Include(c => c.Department)
+            return await _context.Courses.FirstOrDefaultAsync(c => c.CourseId == id);
         }
 
         public async Task<Course> CreateCourseAsync(Course course)

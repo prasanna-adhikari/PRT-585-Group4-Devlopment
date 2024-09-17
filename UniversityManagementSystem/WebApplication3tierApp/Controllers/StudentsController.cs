@@ -9,8 +9,6 @@ using System.Security.Claims;
 using System.Text;
 using _3BusinessLogicLayer.Interfaces;
 using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.JsonPatch.Operations;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace WebApplication3tierApp.Controllers
 {
@@ -104,7 +102,7 @@ namespace WebApplication3tierApp.Controllers
                 return NotFound();
             }
 
-            return NoContent();
+            return Ok(new { message = "Student deleted successfully" });
         }
     }
 }

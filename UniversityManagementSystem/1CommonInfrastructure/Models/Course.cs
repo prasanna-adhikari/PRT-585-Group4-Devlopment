@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _1CommonInfrastructure.Models
 {
@@ -25,6 +20,7 @@ namespace _1CommonInfrastructure.Models
         public int Credits { get; set; }  // Number of credits
 
         [ForeignKey("Department")]
+        [Required]  // Ensure DepartmentId is required
         public int DepartmentId { get; set; }  // Foreign key to the Department table
 
         [Required]
@@ -35,6 +31,6 @@ namespace _1CommonInfrastructure.Models
         [StringLength(10, ErrorMessage = "Semester cannot exceed 10 characters.")]
         public string SemesterOffered { get; set; }  // Semester in which the course is offered
 
-        public virtual Department Department { get; set; }  // Navigation property
+        
     }
 }

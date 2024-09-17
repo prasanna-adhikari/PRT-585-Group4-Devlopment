@@ -12,8 +12,8 @@ using _2DataAccessLayer.Context;
 namespace _2Data_Access_Layer.Migrations
 {
     [DbContext(typeof(UniversityDbContext))]
-    [Migration("20240915100943_AddDepartmentTable")]
-    partial class AddDepartmentTable
+    [Migration("20240917033542_RemoveDepartmentNavigationFromCourse")]
+    partial class RemoveDepartmentNavigationFromCourse
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,45 @@ namespace _2Data_Access_Layer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("_1CommonInfrastructure.Models.Course", b =>
+                {
+                    b.Property<int>("CourseId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CourseId"));
+
+                    b.Property<string>("CourseCode")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("CourseName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Credits")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FacultyName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("SemesterOffered")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("CourseId");
+
+                    b.ToTable("Courses");
+                });
 
             modelBuilder.Entity("_1CommonInfrastructure.Models.Department", b =>
                 {

@@ -39,6 +39,12 @@ namespace WebApplication3tierApp.Controllers
         }
 
         // POST: api/Courses
+        //[HttpPost]
+        //public async Task<ActionResult<Course>> PostCourse(Course course)
+        //{
+        //    var createdCourse = await _courseService.CreateCourseAsync(course);
+        //    return CreatedAtAction(nameof(GetCourse), new { id = createdCourse.CourseId }, createdCourse);
+        //}
         [HttpPost]
         public async Task<ActionResult<Course>> PostCourse(Course course)
         {
@@ -47,22 +53,22 @@ namespace WebApplication3tierApp.Controllers
         }
 
         // PUT: api/Courses/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCourse(int id, Course course)
-        {
-            if (id != course.CourseId)
-            {
-                return BadRequest("Course ID mismatch");
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutCourse(int id, Course course)
+        //{
+        //    if (id != course.CourseId)
+        //    {
+        //        return BadRequest("Course ID mismatch");
+        //    }
 
-            var success = await _courseService.UpdateCourseAsync(course);
-            if (!success)
-            {
-                return NotFound("Course not found");
-            }
+        //    var success = await _courseService.UpdateCourseAsync(course);
+        //    if (!success)
+        //    {
+        //        return NotFound("Course not found");
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // DELETE: api/Courses/5
         [HttpDelete("{id}")]
@@ -74,7 +80,7 @@ namespace WebApplication3tierApp.Controllers
                 return NotFound("Course not found");
             }
 
-            return NoContent();
+            return Ok("Course deleted.");
         }
 
         // PATCH: api/Courses/5

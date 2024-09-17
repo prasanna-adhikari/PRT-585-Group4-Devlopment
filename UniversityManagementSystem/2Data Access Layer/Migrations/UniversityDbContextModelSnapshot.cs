@@ -58,8 +58,6 @@ namespace _2Data_Access_Layer.Migrations
 
                     b.HasKey("CourseId");
 
-                    b.HasIndex("DepartmentId");
-
                     b.ToTable("Courses");
                 });
 
@@ -152,17 +150,6 @@ namespace _2Data_Access_Layer.Migrations
                     b.HasKey("StudentId");
 
                     b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("_1CommonInfrastructure.Models.Course", b =>
-                {
-                    b.HasOne("_1CommonInfrastructure.Models.Department", "Department")
-                        .WithMany()
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Department");
                 });
 #pragma warning restore 612, 618
         }

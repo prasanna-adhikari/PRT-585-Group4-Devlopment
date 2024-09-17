@@ -22,7 +22,8 @@ builder.Services.AddControllers()
     });
 
 // Register business logic services
-builder.Services.AddBusinessLogic();
+_4Bootstrap.ServiceCollectionExtensions.AddBusinessLogic(builder.Services);
+
 
 // Register the DbContext for SQL Server
 builder.Services.AddDbContext<UniversityDbContext>(options =>

@@ -47,22 +47,22 @@ namespace WebApplication3tierApp.Controllers
         }
 
         // PUT: api/Departments/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDepartment(int id, Department department)
-        {
-            if (id != department.DepartmentId)
-            {
-                return BadRequest("Department ID mismatch");
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutDepartment(int id, Department department)
+        //{
+        //    if (id != department.DepartmentId)
+        //    {
+        //        return BadRequest("Department ID mismatch");
+        //    }
 
-            var success = await _departmentService.UpdateDepartmentAsync(department);
-            if (!success)
-            {
-                return NotFound("Department not found");
-            }
+        //    var success = await _departmentService.UpdateDepartmentAsync(department);
+        //    if (!success)
+        //    {
+        //        return NotFound("Department not found");
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // DELETE: api/Departments/5
         [HttpDelete("{id}")]
@@ -74,7 +74,7 @@ namespace WebApplication3tierApp.Controllers
                 return NotFound("Department not found");
             }
 
-            return NoContent();
+            return Ok("Department deleted.");
         }
 
         // PATCH: api/Departments/5
