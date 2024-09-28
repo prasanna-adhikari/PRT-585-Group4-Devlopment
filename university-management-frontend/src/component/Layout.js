@@ -9,9 +9,7 @@ const Layout = ({ children }) => {
       <Navbar />
 
       {/* Main Content */}
-      <Container maxW="container.lg" py={6}>
-        {children}
-      </Container>
+      <Box p={6}>{children}</Box>
     </Box>
   );
 };

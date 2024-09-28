@@ -9,8 +9,19 @@ using Newtonsoft.Json.Serialization; // Added for Newtonsoft.Json support
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000") // Allow requests from React app
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 
+// Add services to the container.
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 var key = Encoding.ASCII.GetBytes(jwtSettings["SecretKey"]);
 
@@ -23,7 +34,6 @@ builder.Services.AddControllers()
 
 // Register business logic services
 _4Bootstrap.ServiceCollectionExtensions.AddBusinessLogic(builder.Services);
-
 
 // Register the DbContext for SQL Server
 builder.Services.AddDbContext<UniversityDbContext>(options =>
@@ -63,6 +73,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowReactApp"); // Use the CORS policy
 
 app.UseAuthentication(); // Enable authentication middleware
 app.UseAuthorization();

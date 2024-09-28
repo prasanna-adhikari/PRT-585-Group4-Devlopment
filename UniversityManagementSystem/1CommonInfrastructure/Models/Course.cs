@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-
+using FluentValidation;
 namespace _1CommonInfrastructure.Models
 {
     public class Course
